@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 17, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/decornest/app/ui/home.module.css [app-rsc] (css module)"],"sourcesContent":["__turbopack_context__.v({\n  \"shape\": \"home-module___oXCya__shape\",\n});\n"],"names":[],"mappings":"AAAA;AACA;AACA"}},
+    {"offset": {"line": 33, "column": 0}, "map": {"version":3,"sources":["file:///home/muzamilhussain/Learning-material/decornest/app/page.tsx"],"sourcesContent":["import styles from \"@/app/ui/home.module.css\";\nimport { lusitana } from \"@/app/ui/fonts\";\n\nexport default function Home() {\n  return (\n    <div className=\"flex min-h-screen flex-col p-6\">\n      <div className={styles.shape}>\n        <p className={`${lusitana.className} antialiased`}>\n          Welcome to Next.js!\n        </p>\n      </div>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAA;AACA;AAAA;;;;AAEe,SAAS;IACtB,qBACE,2PAAC;QAAI,WAAU;kBACb,cAAA,2PAAC;YAAI,WAAW,qJAAM,CAAC,KAAK;sBAC1B,cAAA,2PAAC;gBAAE,WAAW,GAAG,+LAAQ,CAAC,SAAS,CAAC,YAAY,CAAC;0BAAE;;;;;;;;;;;;;;;;AAM3D"}}]
+}
