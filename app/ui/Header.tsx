@@ -42,81 +42,84 @@ import {
 } from "@/components/ui/input-group";
 import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 const NavList: {
-  categories: { title: string; href: string }[];
-  places: { title: string; href: string }[];
-  products: { image: string; title: string; href: string; price: number }[];
+  categories: { title: string; link: string }[];
+  places: { title: string; link: string }[];
+  products: { image: string; title: string; link: string; price: number }[];
 } = {
   categories: [
     {
       title: "All",
-      href: "/categories/all"
+      link: "/categories/all"
     },
     {
       title: "Sofa",
-      href: "/categories/sofa"
+      link: "/categories/sofa"
     },
     {
       title: "Chair",
-      href: "/categories/chair"
+      link: "/categories/chair"
     },
     {
       title: "Bed",
-      href: "/categories/bed"
+      link: "/categories/bed"
     }
     // {
     //   title: "Dining Table",
-    //   href: "/categories/dining-table"
+    //   link: "/categories/dining-table"
     // }
   ],
   places: [
     {
       title: "Living Room",
-      href: "/places/living-room"
+      link: "/places/living-room"
     },
     {
       title: "Bedroom",
-      href: "/places/bedroom"
+      link: "/places/bedroom"
     },
     {
       title: "Dining Room",
-      href: "/places/dining-room"
+      link: "/places/dining-room"
     },
     {
       title: "Office",
-      href: "/places/office"
+      link: "/places/office"
     }
   ],
   products: [
     {
       image: "/products/modern-sofa.jpeg",
       title: "Modern Sofa",
-      href: "/products/modern-sofa",
+      link: "/products/modern-sofa",
       price: 499
     },
     {
       image: "/products/wooden-chair.jpg",
       title: "Wooden Chair",
-      href: "/products/wooden-chair",
+      link: "/products/wooden-chair",
       price: 149
     },
     {
       image: "/products/king-size-bed.jpg",
       title: "King Size Bed",
-      href: "/products/king-size-bed",
+      link: "/products/king-size-bed",
       price: 799
     },
     {
       image: "/products/dining-table-set.jpeg",
       title: "Dining Table Set",
-      href: "/products/dining-table-set",
+      link: "/products/dining-table-set",
       price: 699
     }
   ]
 };
 
 export default function Header() {
+  const pathname = usePathname();
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
@@ -134,11 +137,17 @@ export default function Header() {
                   asChild
                   className={navigationMenuTriggerStyle()}
                 >
-                  <Link href="/home">Home</Link>
+                  <Link href="/">Home</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+                <NavigationMenuTrigger
+                  className={clsx({
+                    "bg-accent text-accent-foreground": pathname === "/products"
+                  })}
+                >
+                  <Link href="/products">Products</Link>
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <section className="grid gap-12 md:grid-cols-3 px-12 py-6">
                     <div className="col">
@@ -150,7 +159,7 @@ export default function Header() {
                           <li
                             key={category.title}
                             title={category.title}
-                            href={category.href}
+                            // href={category.link}
                             className="text-sm mb-2 text-gray-500"
                           >
                             {category.title}
@@ -165,7 +174,7 @@ export default function Header() {
                           <li
                             key={place.title}
                             title={place.title}
-                            href={place.href}
+                            // href={place.href}
                             className="text-sm mb-2 text-gray-500"
                           >
                             {place.title}
@@ -220,7 +229,7 @@ export default function Header() {
                   asChild
                   className={navigationMenuTriggerStyle()}
                 >
-                  <Link href="/home">Blog</Link>
+                  <Link href="/blog">Blog</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -228,7 +237,7 @@ export default function Header() {
                   asChild
                   className={navigationMenuTriggerStyle()}
                 >
-                  <Link href="/home">Contact</Link>
+                  <Link href="/contact">Contact</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
